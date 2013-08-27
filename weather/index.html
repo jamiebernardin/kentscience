@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="app.css">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript" src="js/zepto-ext.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+</head>
+<body>
+    <!--<div class="panel"><h3>Weather</h3><div id="localeSelect"></div><a id="find" class="tiny button" href="javascript:weather.find()">find</a></div>-->
+
+    <nav class="top-bar">
+        <ul class="title-area">
+            <!-- Title Area -->
+            <li class="name">
+                <h1><a href="#">Weather</a></h1>
+            </li>
+        </ul>
+        <section class="left">
+            <ul >
+                <li class="divider"></li>
+                <li id="selectLocale" class="small-4 columns"></li>
+                <li class="small-4 columns">
+                <input id="query" type="text">
+                </li>
+                <li class=" small-4 columns">
+                <a href="javascript:Ctrl.find()" class="alert button">Find</a>
+                </li>
+            </ul>
+        </section>
+    </nav>
+    <div id="mainView"/>
+</body>
+</html>
