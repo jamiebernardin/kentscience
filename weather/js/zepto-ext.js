@@ -45,7 +45,7 @@
                 text = text.replace(line, expandArrays(model, line.replace('repeat','')));
             }
         });
-        console.log(text);
+  //      console.log(text);
         num = text.split('}').length - 1
         for (i = 0; i < num; i++) {
             fbrak = text.indexOf('{');

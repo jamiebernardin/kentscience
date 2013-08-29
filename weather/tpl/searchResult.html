@@ -1,5 +1,5 @@
-<div>Location: {$.name}</div>  <a href="javascript:Ctrl.addLocale()" class="button">Add</a>
-<div>weather: {$.weather.0.description}</div>
-<div>temperature: {$.main.temp}F</div>
-<div>humidity: {$.main.humidity}%</div>
-<div>wind: {$.wind.speed}</div>
+<div>Location: {*.name}</div>  <a href="javascript:Ctrl.addLocale({*.id} , '{*.name}')" class="button">Add</a>
+<div>weather: {*.weather.0.description}</div>
+<div>temperature: {*.main.temp}F</div>
+<div>humidity: {*.main.humidity}%</div>
+<div>wind: {*.wind.speed}</div>
