@@ -15,15 +15,16 @@ var Ctrl = function() {
 
         },
         cityChange: function () {
-            console.log('cityChange:  ' + $("#citySelect").val());
             getWeather($("#citySelect").val(), function(data) {
                 $('#mainView').bindTpl('tpl/current.html', data);
             });
             var locs = loadLocations();
+            locs.current = $("#citySelect").val();
             storeLocations(locs);
-//            getForcast($("#citySelect")[0].value, function(data) {
-//                $('#forecastView').bindTpl('tpl/forecast.html', data);
-//            });
+            getForecast($("#citySelect")[0].value, function(data) {
+                 console.log(JSON.stringify(data,null, 4))
+                 $('#forecastView').bindTpl('tpl/forecast.html', data);
+           });
         },
         find: function() {
             searchCity($("#query")[0].value, function(data) {
@@ -38,10 +39,10 @@ var Ctrl = function() {
             var locs = loadLocations();
             locs.list.push({name:name, code:code});
             locs.current = code;
-  //          console.log(locs);
             storeLocations(locs);
+            $("#selectLocale").bindTpl('tpl/locale.html', locs );
             $("#citySelect").val(locs.current);
-            console.log('addLocale: ' + $("#citySelect").val());
+            $("#query").val("");
             this.cityChange();
         }
     };
@@ -69,9 +70,11 @@ var Ctrl = function() {
         });
     };
     function getForecast(code, handler) {
-        var url = "http://api.openweathermap.org/data/2.5/weather?callback=?";
+        var url = "http://api.openweathermap.org/data/2.5/forecast/daily?callback=?";
         $.getJSON( url, {units:"imperial", id:code}, function(data) {
-            console.log(JSON.stringify(data,null, 4));
+            for (var i = 0; i <data.list.length; i++) {
+                data.list[i].weather[0].icon = "http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png"
+            }
             handler(data);
         });
     };

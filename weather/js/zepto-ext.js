@@ -12,8 +12,8 @@
     });
 
     $.extend($.fn, {
-        bindTpl: function(template, model){
-        var that = this;
+        bindTpl: function(template, model) {
+            var that = this;
             $.ajax({
                 type: "GET",
                 async: false,
