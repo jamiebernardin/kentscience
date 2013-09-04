@@ -22,7 +22,6 @@ var Ctrl = function() {
             locs.current = $("#citySelect").val();
             storeLocations(locs);
             getForecast($("#citySelect")[0].value, function(data) {
-                 console.log(JSON.stringify(data,null, 4))
                  $('#forecastView').bindTpl('tpl/forecast.html', data);
            });
         },
@@ -74,6 +73,7 @@ var Ctrl = function() {
         $.getJSON( url, {units:"imperial", id:code}, function(data) {
             for (var i = 0; i <data.list.length; i++) {
                 data.list[i].weather[0].icon = "http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png"
+                data.list[i].dt = new Date(data.list[i].dt).toUTCString();
             }
             handler(data);
         });
