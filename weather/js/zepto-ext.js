@@ -38,11 +38,21 @@
     var resolve = function(text, model) {
         var fbrak, bbrak,   // indexOf '{', '}'
             enclosure, symbol, words, num,  // '{model.foo}' 'model.foo'
-            num, i, lines;
+            num, i, lines, joinLines=false, multiLine;
         lines = text.split("\n");
         lines.forEach(function(line) {
-            if (line.indexOf('repeat') > -1) {
+            if (line.indexOf('repeat-end') > -1) {
+                multiLine+=line+"\n";
+                var modifiedMulti = multiLine.replace('repeat-begin','').replace('repeat-end', '');
+                text = text.replace(multiLine, expandArrays(model, modifiedMulti));
+                joinLines = false;
+            } else if (line.indexOf('repeat-begin') > -1) {
+                multiLine = line+"\n"
+                joinLines=true;
+            } else if (line.indexOf('repeat') > -1) {
                 text = text.replace(line, expandArrays(model, line.replace('repeat','')));
+            } else if (joinLines) {
+                multiLine+=line+"\n";
             }
         });
   //      console.log(text);

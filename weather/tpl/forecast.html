@@ -1,1 +1,10 @@
-<div repeat><span>{*.list[].dt}</span><span><img src="{*.list[].weather.0.icon}"></span></div>
+<table>
+    <tr>  <!--repeat-begin-->
+        <td><div>{*.list[].month}{*.list[].date}</div><div>{*.list[].day}</div></td>
+        <td><img src="{*.list[].weather.0.icon}"></td>
+        <td><div>{*.list[].weather.0.description}</div></td>
+        <td><div>day:{*.list[].temp.day}</div></td>
+        <td><div>night:{*.list[].temp.night}</div></td>
+        <td><div>wind:{*.list[].speed}</div></td>
+    </tr>  <!--repeat-end-->
+</table>

@@ -3,7 +3,6 @@ window.addEventListener('load', function() {
 });
 
 var Ctrl = function() {
-    // private methods
     var result =  {
         init: function(locs) {
             if (locs == undefined) {
@@ -26,13 +25,16 @@ var Ctrl = function() {
            });
         },
         find: function() {
-            searchCity($("#query")[0].value, function(data) {
-                if (data.list) {
-                    $('#mainView').bindTpl('tpl/searchResult.html', data.list[0]);
-                } else {
-                    $('#mainView').error('No weather station in that proximity.')
-                }
-            })
+            if ($("#query")[0].value.length > 2) {
+                searchCity($("#query")[0].value, function(data) {
+                    console.log(JSON.stringify(data, null, 4));
+                    if (data.list) {
+                        $('#mainView').bindTpl('tpl/searchResult.html', data.list[0]);
+                    } else {
+                        $('#mainView').error('No weather station in that proximity.')
+                    }
+                })
+            }
         },
         addLocale: function (code, name) {
             var locs = loadLocations();
@@ -58,7 +60,7 @@ var Ctrl = function() {
             for (var i = 0; i <data.weather.length; i++) {
                 data.weather[i].icon = "http://openweathermap.org/img/w/" + data.weather[i].icon + ".png"
             }
-            data.dt = new Date(data.dt).toUTCString()
+            data.dt = new Date(data.dt*1000).toUTCString()
             if (data.rain == undefined) {
                 data.rain = {'3h':0};
             } else {
@@ -69,12 +71,17 @@ var Ctrl = function() {
         });
     };
     function getForecast(code, handler) {
-        var url = "http://api.openweathermap.org/data/2.5/forecast/daily?callback=?";
+
+        var url = "http://api.openweathermap.org/data/2.5/forecast/daily?callback=?", date;
         $.getJSON( url, {units:"imperial", id:code}, function(data) {
             for (var i = 0; i <data.list.length; i++) {
                 data.list[i].weather[0].icon = "http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png"
-                data.list[i].dt = new Date(data.list[i].dt).toUTCString();
+                date = new Date(data.list[i].dt*1000);
+                data.list[i].day = days[date.getDay()];
+                data.list[i].month = months[date.getMonth()];
+                data.list[i].date = date.getDate();
             }
+            console.log(JSON.stringify(data,null, 4));
             handler(data);
         });
     };
@@ -93,6 +100,7 @@ var Ctrl = function() {
     function storeLocations(locs) {
         localStorage.setItem('weather.locations', JSON.stringify(locs));
     };
-
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
     return result;
 }();

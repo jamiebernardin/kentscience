@@ -1,0 +1,52 @@
+@charset "UTF-8";
+/* CSS Document */
+
+#mainView {
+	padding: 1em 1em;
+	text-align: center;
+}
+
+.row {
+	padding-bottom: .5em;	
+}
+
+#contentTitle {
+	padding-bottom: 1em;
+	text-align: left;
+	font-weight: 600;
+	font-size: 1em;
+	text-transform: uppercase;
+}
+
+#contentSection {
+	text-align: left;
+	font-weight: 500;
+	color: #999;
+	font-size: .9em;
+	text-transform: uppercase;
+}
+
+#contentDetails {
+	text-align: left;
+	border: 1px solid #ccc; 
+	padding: .7em;
+}
+
+#contentTable {
+	background: white;
+	border-style: none;
+}
+
+#contentTable td {
+	background: white;
+	border-style: none;
+}
+
+a.ublue, a.ublue:visited, a.ublue:link, a.ublue:active {
+	text-decoration: none;
+	color: #1051bb;
+}
+
+a.ublue:hover {
+	text-decoration: underline;
+}

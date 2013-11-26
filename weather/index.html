@@ -2,34 +2,44 @@
 <html>
 <head>
     <title>Weather</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="app.css">
-    <script type="text/javascript" src="js/zepto.js"></script>
-    <script type="text/javascript" src="js/zepto-ext.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/custom.css">
     <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/vendor/custom.modernizr.js"></script>
 </head>
-<body>
-    <nav class="top-bar">
+<body class="antialiased off-canvas hide-extras">
+<div class="contain-to-grid">
+    <nav class="top-bar" data-options="is_hover:false">
         <ul class="title-area">
-            <!-- Title Area -->
             <li class="name">
                 <h1><a href="#">Weather</a></h1>
             </li>
+            <li id="menu" class="toggle-topbar menu-icon">
+                <a href="#"><span>Menu</span></a>
+            </li>
         </ul>
-        <section class="left">
-            <ul >
+        <section class="top-bar-section">
+            <ul class="left" style="margin-left: 1.5em;">
                 <li class="divider"></li>
-                <li id="selectLocale" class="small-4 columns"></li>
-                <li class="small-4 columns">
-                    <input id="query" type="text">
-                </li>
-                <li class=" small-4 columns">
-                <a href="javascript:Ctrl.find()" class="alert button">Find</a>
-                </li>
+                <li id="selectLocale" ></li>
+                <li class="divider"></li>
+                <li><input id="query" type="text"></li>
+                <li class="divider"></li>
+                <li><a href="javascript:Ctrl.find()" class="alert button">Find</a></li>
+                <li class="divider"></li>
             </ul>
         </section>
     </nav>
+    </div>
     <div id="mainView"></div>
     <div id="forecastView"></div>
+    <script type="text/javascript" src="js/vendor/zepto.js"></script>
+    <script type="text/javascript" src="js/zepto-ext.js"></script>
+    <script src="js/vendor/foundation.min.js"></script>
+    <script src="js/vendor/foundation.topbar.js"></script>
+    <script>
+        $(document).foundation();
+    </script>
 </body>
 </html>

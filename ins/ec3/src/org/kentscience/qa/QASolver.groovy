@@ -18,13 +18,13 @@ class QASolver {
 	//	double val = driver()
 	//	double val = target()
 		(0..iterations).each { i ->		
-			double b = Math.pow(i/iterations, 2); 
-			double a = 1-b
+			double a = Math.pow(i/iterations,1);
+			double b = 1-a
 		    double val = b*target() + a*driver()
 			config.flip()
 			double newVal = b*target() + a*driver()
 			//	double newVal = target()
-			if (i % 1000 == 0) {
+			if (i % 10000 == 0) {
 				println "a:$a, b:$b"
 				println "driver: ${driver()}"
 				println "target: ${target()}"
@@ -46,16 +46,27 @@ class QASolver {
 		val/(M*N)	
 	}
 	
-	double driver() {
-		double val = 0
-		(0..N-1).each { i ->
-			val += config.spins[0][i]*config.spins[M-1][i]
-			(0..M-2).each { m -> 
-				val += config.spins[m][i]*config.spins[m+1][i]
-			}
-		}
-		val 
-	}
+//	double driver() {
+//		double val = 0
+//		(0..N-1).each { i ->
+//			val += config.spins[0][i]*config.spins[M-1][i]
+//			(0..M-2).each { m ->
+//				val += config.spins[m][i]*config.spins[m+1][i]
+//			}
+//		}
+//		val*100;
+//	}
+
+    double driver() {
+        double val = 0
+        (0..N-1).each { i ->
+            val += 1- config.spins[0][i]*config.spins[M-1][i]
+            (0..M-2).each { m ->
+                val += 1- config.spins[m][i]*config.spins[m+1][i]
+            }
+        }
+        val*10000;
+    }
 	
 	void test() {
 		println "driver: ${driver()}"
