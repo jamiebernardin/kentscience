@@ -6,6 +6,23 @@
 	text-align: center;
 }
 
+#mainView table {
+	padding: 1em 1em;
+	text-align: center;
+	width: 100%;
+}
+
+#forecastView {
+	padding: 1em 1em;
+	text-align: center;
+}
+
+#forecastView table {
+	padding: 1em 1em;
+	text-align: center;
+	width: 100%;
+}
+
 .row {
 	padding-bottom: .5em;	
 }
@@ -49,4 +66,27 @@ a.ublue, a.ublue:visited, a.ublue:link, a.ublue:active {
 
 a.ublue:hover {
 	text-decoration: underline;
+}
+
+.currentTemp {
+	font-weight: 600;
+	font-size: 1.7em;
+	paddin-bottom: 5px;
+}
+
+.weatherDesc {
+	font-weight: 600;
+	text-transform: capitalize;
+}
+
+.weatherDescFuture {
+	text-transform: capitalize;
+}
+
+.todaysSubcat {
+	margin-right: 1em;
+}
+
+#query {
+	width: 20em;	
 }

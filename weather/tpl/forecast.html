@@ -1,10 +1,9 @@
 <table>
     <tr>  <!--repeat-begin-->
-        <td><div>{*.list[].month}{*.list[].date}</div><div>{*.list[].day}</div></td>
+        <td><div>{*.list[].day}</div><div>{*.list[].month} {*.list[].date}</div></td>
         <td><img src="{*.list[].weather.0.icon}"></td>
-        <td><div>{*.list[].weather.0.description}</div></td>
-        <td><div>day:{*.list[].temp.day}</div></td>
-        <td><div>night:{*.list[].temp.night}</div></td>
-        <td><div>wind:{*.list[].speed}</div></td>
+        <!--<td><div class="weatherDescFuture">{*.list[].weather.0.description}</div></td>-->
+        <td><div>H: {*.list[].temp.max} L: {*.list[].temp.min}</div></td>
+        <td><div>Wind: {*.list[].speed}</div></td>
     </tr>  <!--repeat-end-->
 </table>

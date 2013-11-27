@@ -1,11 +1,33 @@
-<p>Weather in {*.name} as of <span>{*.dt}</span></p>
-<div repeat><span>{*.weather[].description}</span><span><img src="{*.weather[].icon}"></span></div>
-<div>temperature: {*.main.temp} F</div>
-<div>max temp: {*.main.temp_max}</div>
-<div>max timp: {*.main.temp_min}</div>
-<div>humidity: {*.main.humidity}%</div>
-<div>pressure: {*.main.pressure} hPa</div>
-<div>wind speed: {*.wind.speed} mph</div>
-<div>wind direction: {*.wind.deg}</div>
-<div>cloud cover {*.clouds.all} %</div>
-<div>rain rate: {*.rain.rate} mm/hour</div>
+<p><strong>{*.name}</strong></p>
+<p style="margin-top: -20px;">{*.dt}</p>
+<table>
+<tr>
+<td><div><strong>{*.main.temp_max}</strong><br />Today's High</div></td>
+<td>
+<p><strong>Current Weather</strong></p>
+<div>
+    <div class="currentTemp">{*.main.temp} F</div>
+    <div repeat><span><img src="{*.weather[].icon}"></span> <span class="weatherDesc">{*.weather[].description}</span></div>
+</div>
+</td>
+<td><div><strong>{*.main.temp_min}</strong><br />Today's Low</div></td>
+</tr>
+<tr>
+<td colspan="3">
+<p>
+<span class="todaysSubcat">Wind: {*.wind.speed} mph</span>
+<span>Humidity: {*.main.humidity}%</span>
+</p>
+<!-- ==start== I WOULD DELETE THESE LAST TWO ROWS -->
+<p>
+<span class="todaysSubcat">Pressure: {*.main.pressure} hPa</span>
+<span>Wind Direction: {*.wind.deg}</span>
+</p>
+<p>
+<span class="todaysSubcat">Clouds: {*.clouds.all}%</span>
+<span>Rain: {*.rain.rate} mm/hour</span>
+<!-- ==end== -->
+</p>
+</td>
+</tr>
+</table>
