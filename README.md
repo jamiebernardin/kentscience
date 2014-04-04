@@ -1,7 +1,7 @@
 kentscience  
 ===========
 
-Simple archive of personal hacking - mostly science projects in numerical chemistry
+Simple archive of personal hacking...mostly science projects in numerical chemistry
 
 weather
 -------
