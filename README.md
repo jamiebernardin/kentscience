@@ -1,5 +1,7 @@
-kentscience:  Simple archive of non-work hacking, mostly science
+kentscience  
 ===========
+
+Simple archive of personal hacking - mostly science projects in numerical chemistry
 
 weather
 -------
@@ -9,7 +11,7 @@ weather
 *  need simple groovy server included since the framework uses ajax for template loads 
 
 INS
-___
+---
 
 *  infinite swapping studies for determine low temperature properties of non-ergodic systems
 *  tested on simple hydrogen system
