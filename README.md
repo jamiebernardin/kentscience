@@ -1,14 +1,7 @@
 kentscience  
 ===========
 
-Simple archive of personal hacking...mostly science projects in numerical chemistry
-
-weather
--------
-
-*  simple single-page app using a framework and templating engine I wrote as a zepto extension
-*  using open weather map api's
-*  need simple groovy server included since the framework uses ajax for template loads 
+Some research hacking...mostly science projects in numerical computing
 
 INS
 ---
@@ -19,3 +12,12 @@ INS
 
 **Conclusion**:  Infinite swapping is definitely better for finding thermal properies non-ergodic systems, 
                but not well suited for finding actual ground state.  Plain parallel tempering is probably more efficient.
+
+weather
+-------
+
+*  single-page app using my own JavaScript framework and templating engine I wrote as a zepto extension
+*  open weather map api's
+*  simple groovy server included since my framework requires ajax for template loads 
+
+
